@@ -1,10 +1,10 @@
 请将各平台安装包放到本目录，文件名与下列完全一致（构建后在 dist/assets/downloads/ 下可下载）。
 
-QuietEditor-Windows-x64.7z
+QuietEditor-Windows-x64.exe
 QuietEditor-macOS-arm64.tar.gz
 QuietEditor-macOS-x64.tar.gz
 QuietEditor-Linux-x86_64.deb
 QuietEditor-Linux-x86_64.rpm
-QuietEditor-Android-arm64.7z
+QuietEditor-Android-arm64.apk
 
 若需改名，请同步修改 index.html 下载区与 assets/site.js 中的 FILES 常量。

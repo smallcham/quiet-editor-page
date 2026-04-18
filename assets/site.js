@@ -9,12 +9,12 @@
 
   /** 与「放置安装包说明.txt」及 README 中约定保持一致 */
   var FILES = {
-    windows: 'QuietEditor-Windows-x64.7z',
+    windows: 'QuietEditor-Windows-x64.exe',
     macArm: 'QuietEditor-macOS-arm64.tar.gz',
     macIntel: 'QuietEditor-macOS-x64.tar.gz',
     linuxDeb: 'QuietEditor-Linux-x86_64.deb',
     linuxRpm: 'QuietEditor-Linux-x86_64.rpm',
-    android: 'QuietEditor-Android-arm64.7z',
+    android: 'QuietEditor-Android-arm64.apk',
   };
 
   function linuxPrefersRpm(ua) {
@@ -83,14 +83,14 @@
       return Promise.resolve({
         href: fileHref(FILES.android),
         label: '下载 Android 版',
-        sub: '已识别为 Android（arm64）；下载为 7z，解压后安装其中 APK。',
+        sub: '已识别为 Android（arm64）。',
       });
     }
     if (isWindows(ua)) {
       return Promise.resolve({
         href: fileHref(FILES.windows),
         label: '下载 Windows 版',
-        sub: '已识别为 Windows（x64）；下载为 7z，解压后运行。',
+        sub: '已识别为 Windows（x64）。',
       });
     }
     if (isLinux(ua)) {
