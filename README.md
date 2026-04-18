@@ -46,12 +46,12 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 
 | 平台 | 文件名 |
 |------|--------|
-| Windows x64 | `QuietEditor-Windows-x64.exe` |
+| Windows x64 | `QuietEditor-Windows-x64.7z`（7z，解压后使用） |
 | macOS（Apple 芯片） | `QuietEditor-macOS-arm64.tar.gz` |
 | macOS（Intel） | `QuietEditor-macOS-x64.tar.gz` |
 | Linux x86_64（Debian/Ubuntu 等） | `QuietEditor-Linux-x86_64.deb` |
 | Linux x86_64（Fedora/RHEL/openSUSE 等） | `QuietEditor-Linux-x86_64.rpm` |
-| Android arm64 | `QuietEditor-Android-arm64.apk` |
+| Android arm64 | `QuietEditor-Android-arm64.7z`（7z，解压后安装 APK） |
 
 同目录下另有 **`放置安装包说明.txt`**，可与上表对照使用。
 
@@ -74,12 +74,12 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 
 | 检测 | 默认下载文件 |
 |------|----------------|
-| Windows | `QuietEditor-Windows-x64.exe` |
+| Windows | `QuietEditor-Windows-x64.7z` |
 | macOS + Intel（UA 含 `Intel Mac OS X`） | `QuietEditor-macOS-x64.tar.gz` |
 | 其他 macOS | 优先 Apple 芯片包；必要时结合 `userAgentData` / UA 中的 arm 信息 |
 | Linux + UA 匹配 Fedora/RHEL/openSUSE 等 | `QuietEditor-Linux-x86_64.rpm` |
 | 其他 Linux | `QuietEditor-Linux-x86_64.deb` |
-| Android | `QuietEditor-Android-arm64.apk` |
+| Android | `QuietEditor-Android-arm64.7z` |
 | iOS | 跳转 **`#download-ios`**；页面展示为「暂不支持下载」，无安装包文件 |
 | 无法识别 | 跳转 **`#download`**，由用户手动选择卡片 |
 
