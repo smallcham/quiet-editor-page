@@ -1,0 +1,11 @@
+{
+  "name": "quiet-editor-page",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Quiet Editor — 官网介绍与下载页（Cloudflare Pages）",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "npx --yes serve dist -p 8788"
+  }
+}

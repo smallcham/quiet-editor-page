@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="sage-vellum">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Quiet Editor — 跨平台 Markdown 笔记，区块编辑、Git 同步、BM25 检索与知识图谱，本地优先、离线可用。" />
+    <meta name="theme-color" content="#516351" />
+    <title>Quiet Editor — 本地优先的 Markdown 笔记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page-shell">
+    <header class="site-nav">
+      <div class="site-nav__inner wrap">
+        <a class="site-nav__brand" href="#top">
+          <span class="site-nav__logo"><img src="./assets/logo.svg" width="40" height="40" alt="" /></span>
+          Quiet Editor
+        </a>
+        <nav class="site-nav__links" aria-label="页面导航">
+          <a href="#compare">对比</a>
+          <a href="#features">特色</a>
+          <a href="#showcase">界面</a>
+          <a href="#download">下载</a>
+        </nav>
+        <a class="btn btn--primary btn--sm js-primary-download" href="#download"><span class="material-symbols-outlined">download</span>下载应用</a>
+      </div>
+    </header>
+
+    <main class="page-main" id="top">
+      <section class="hero wrap">
+        <div class="hero__orb" aria-hidden="true"></div>
+        <div class="hero__orb hero__orb--alt" aria-hidden="true"></div>
+        <div class="hero__inner">
+          <div>
+            <p class="hero__eyebrow reveal"><span class="material-symbols-outlined" style="font-size: 1rem">edit_note</span> Markdown · Git · 本地数据</p>
+            <h1 class="reveal">
+              <span class="hero__brand-line">Quiet Editor</span><br /><span class="hero__h1-sub">高性能本地 Markdown 笔记</span>
+            </h1>
+            <p class="hero__lead reveal">
+              基于 <strong>Tauri 2</strong> 与 <strong>Rust</strong> 的桌面与移动端笔记应用。区块式编辑、<code>[[双向引用]]</code>、知识图谱、BM25
+              全文检索与 Git 整库同步在同一套界面中完成；数据落在你的磁盘与自有 Git 远程上，无需把正文托管在第三方云端。
+            </p>
+            <div class="hero__actions reveal">
+              <a class="btn btn--primary js-primary-download" href="#download"
+                ><span class="material-symbols-outlined">download</span>选择安装包</a
+              >
+              <a class="btn btn--ghost" href="#compare"><span class="material-symbols-outlined">compare</span>与常见工具对比</a>
+            </div>
+            <p class="hero__meta reveal" id="js-dl-hint">正在识别你的系统以匹配安装包…</p>
+          </div>
+
+          <div class="showcase reveal" id="showcase" aria-label="软件界面示意">
+            <div class="showcase__frame">
+              <div class="showcase__chrome">
+                <div class="showcase__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="showcase__title">Quiet Editor</div>
+              </div>
+              <div class="showcase__body">
+                <aside class="showcase__sidebar">
+                  <div class="showcase__nav-item showcase__nav-item--active">
+                    <span class="material-symbols-outlined" style="font-size: 1.1rem">folder_open</span>
+                    仓库
+                  </div>
+                  <div class="showcase__nav-item"><span class="material-symbols-outlined" style="font-size: 1.1rem">description</span> 文章</div>
+                  <div class="showcase__nav-item"><span class="material-symbols-outlined" style="font-size: 1.1rem">account_tree</span> 知识图谱</div>
+                  <div class="showcase__nav-item"><span class="material-symbols-outlined" style="font-size: 1.1rem">settings</span> 设置</div>
+                </aside>
+                <div class="showcase__main">
+                  <div class="showcase__topbar">
+                    <span class="showcase__brand">Quiet Editor</span>
+                    <span class="showcase__pill">已同步</span>
+                  </div>
+                  <h2 class="showcase__doc-title">发布说明 · 草稿</h2>
+                  <div class="showcase__block">Git 远程：origin · 上次拉取 2 分钟前。代理与多远程可在设置中按仓库配置。</div>
+                  <div class="showcase__block showcase__block--quote">BM25 检索支持键盘在结果间跳转，长列表可折叠表格行。</div>
+                  <pre class="showcase__code" tabindex="-1"><code>[[产品/需求/里程碑]]  ← 文档引用
+```mermaid
+flowchart LR
+  编辑 --> 提交 --> 推送
+```</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--compare" id="compare">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <h2>和常见方案相比，适合谁？</h2>
+            <p>下面从「数据归属、工作方式、能力边界」出发做简要对比，便于你判断 Quiet Editor 是否匹配自己的工作流。</p>
+          </header>
+          <div class="compare-grid">
+            <article class="compare-card reveal">
+              <div class="compare-card__badge">vs Notion</div>
+              <h3>相对 Notion 的优势</h3>
+              <ul class="compare-card__list">
+                <li><strong>本地优先、离线可用</strong>：正文与附件在本地仓库目录中，不依赖在线编辑器才能读写；弱网或离线时仍可完整编辑与检索。</li>
+                <li><strong>标准 Markdown 与 Git 版本历史</strong>：以文件夹 + <code>.md</code> 为主，配合整库 Git 同步；历史在 Git 里可追溯、可对比，而不是锁在专有云端格式中。</li>
+                <li><strong>无订阅与账户体系绑定</strong>：不将笔记访问权与云端账号强绑定；适合希望「数据在自己磁盘与自有远程」的团队与个人。</li>
+                <li><strong>更轻的原生性能路径</strong>：Rust + Tauri 原生壳，大仓库检索与图谱交互更偏向本地算力，减少「所有操作都绕一圈云端」的体感延迟。</li>
+              </ul>
+              <p class="compare-card__note">Notion 在协作数据库、看板与多端富文本协同上仍很强；若你强依赖实时协同表格与评论流，可继续以 Notion 为主、用 Quiet Editor 管「版本化的文字资产」。</p>
+            </article>
+            <article class="compare-card compare-card--alt reveal">
+              <div class="compare-card__badge">vs Obsidian</div>
+              <h3>相对 Obsidian 的优势</h3>
+              <ul class="compare-card__list">
+                <li><strong>内置 Git 同步心智</strong>：以仓库为边界的一键拉取/推送、多远程与代理、按仓库排除远程等，与笔记目录同一套 UI，减少插件拼凑成本。</li>
+                <li><strong>一体化区块编辑体验</strong>：段落/标题/任务/表格/代码/Mermaid 等在统一区块模型与斜杠菜单下完成，表格与代码编辑路径更「应用原生」而非纯文本补丁感。</li>
+                <li><strong>Rust 后端检索与索引</strong>：BM25 全文检索在本地索引上完成，适合笔记量大、希望在同一应用内闭环搜索与打开路径的用户。</li>
+                <li><strong>更克制的扩展面</strong>：不依赖社区插件生态即可覆盖 Git、图谱、导入导出等主干能力，升级与排错路径相对集中。</li>
+              </ul>
+              <p class="compare-card__note">Obsidian 的插件生态与主题极为丰富；若你已深度定制 Obsidian 工作流，可把 Quiet Editor 视为「另一条偏原生与一体化」的备选线。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="features">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <h2>核心能力</h2>
+            <p>面向「长文写作 + 结构化笔记 + 仓库级同步」设计，界面保持 Sage &amp; Vellum 色系与低干扰布局。</p>
+          </header>
+          <div class="grid grid--3">
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">view_agenda</span></div>
+              <h3>区块式编辑器</h3>
+              <p>十余种区块类型、斜杠命令、多选与拖拽、沉浸式模式与编辑锁定；代码块由 CodeMirror 6 驱动，Mermaid 在块内直接预览。</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">hub</span></div>
+              <h3>引用与知识图谱</h3>
+              <p><code>[[仓库/路径/文章]]</code> 建立双向引用与反向索引；图谱视图支持平移、缩放与过滤，便于理解笔记网络。</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">search</span></div>
+              <h3>BM25 全文检索</h3>
+              <p>本地索引与相关性排序；全局搜索支持键盘导航；编辑器内查找快速定位。</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">sync</span></div>
+              <h3>Git 整库同步</h3>
+              <p>工作目录级版本控制；多远程、SSH/HTTPS、HTTP(S) 与 SOCKS5 代理；可按仓库排除远程；可选将部分设置与元数据随仓库走。</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">palette</span></div>
+              <h3>主题与语言</h3>
+              <p>Sage &amp; Vellum 设计体系与多主题切换；中英双语界面；可选性能模式以降低阴影开销、换取弱设备流畅度。</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon"><span class="material-symbols-outlined">import_export</span></div>
+              <h3>导入与导出</h3>
+              <p>支持常见办公格式转入 Markdown；导出 Markdown / PDF；图片等资源可整理到 <code>.assets/</code> 目录侧写。</p>
+            </article>
+          </div>
+
+          <div class="tech-strip reveal" aria-label="技术栈">
+            <span>Rust</span>
+            <span>Tauri 2</span>
+            <span>TypeScript</span>
+            <span>Vite</span>
+            <span>CodeMirror 6</span>
+            <span>Mermaid</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <h2>下载安装包</h2>
+            <p>顶部主按钮会根据当前浏览器所在系统自动匹配下方列表中的<strong>固定文件名</strong>。若识别不准，请直接点击对应平台的链接。</p>
+          </header>
+
+          <div class="dl-grid">
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">laptop_windows</span> Windows（x64）</h3>
+              <p>安装包文件名：<code>QuietEditor-Windows-x64.exe</code></p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-Windows-x64.exe" download>下载 EXE</a>
+              </div>
+            </div>
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">memory</span> macOS · Apple 芯片</h3>
+              <p>安装包文件名：<code>QuietEditor-macOS-arm64.tar.gz</code>（解压后按包内说明运行）</p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-macOS-arm64.tar.gz" download>下载 tar.gz</a>
+              </div>
+            </div>
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">developer_board</span> macOS · Intel</h3>
+              <p>安装包文件名：<code>QuietEditor-macOS-x64.tar.gz</code></p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-macOS-x64.tar.gz" download>下载 tar.gz</a>
+              </div>
+            </div>
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">deployed_code</span> Linux · DEB（x86_64）</h3>
+              <p>安装包文件名：<code>QuietEditor-Linux-x86_64.deb</code>（适用于 Debian、Ubuntu 等）</p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-Linux-x86_64.deb" download>下载 DEB</a>
+              </div>
+            </div>
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">inventory_2</span> Linux · RPM（x86_64）</h3>
+              <p>安装包文件名：<code>QuietEditor-Linux-x86_64.rpm</code>（适用于 Fedora、RHEL、openSUSE 等）</p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-Linux-x86_64.rpm" download>下载 RPM</a>
+              </div>
+            </div>
+            <div class="dl-card reveal">
+              <h3><span class="material-symbols-outlined">smartphone</span> Android（arm64）</h3>
+              <p>安装包文件名：<code>QuietEditor-Android-arm64.apk</code></p>
+              <div class="dl-card__actions">
+                <a class="btn btn--primary btn--sm" href="./assets/downloads/QuietEditor-Android-arm64.apk" download>下载 APK</a>
+              </div>
+            </div>
+            <div class="dl-card dl-card--ios reveal" id="download-ios">
+              <span class="dl-card__badge-ios" role="status">暂不支持下载</span>
+              <h3><span class="material-symbols-outlined">phone_iphone</span> iOS</h3>
+              <p class="dl-card__ios-copy">iOS 版本目前不提供安装包下载。若需在手机上使用，请选用 <strong>Android</strong> 安装包，或在 <strong>Windows / macOS / Linux</strong> 桌面端下载。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <div class="site-footer__brand">
+        <img src="./assets/logo.svg" width="36" height="36" alt="" />
+        <span>Quiet Editor</span>
+      </div>
+      <p class="site-footer__tagline">本地优先的 Markdown 笔记与 Git 同步工具</p>
+      <p class="site-footer__actions">
+        <button type="button" class="site-footer__contact js-contact-author" aria-label="联系作者，打开系统邮件">
+          <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+          联系作者
+        </button>
+      </p>
+      <p class="site-footer__copy">© <span id="y"></span> Quiet Editor</p>
+    </footer>
+    </div>
+
+    <script src="./assets/site.js" defer></script>
+  </body>
+</html>
