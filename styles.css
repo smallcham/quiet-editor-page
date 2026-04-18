@@ -467,9 +467,8 @@ a:hover {
   color: var(--color-on-background);
 }
 
-.hero__h1-sub {
-  display: block;
-  margin-top: 0.45rem;
+.hero h1.hero__h1-sub {
+  margin: 0 0 var(--space-6);
   font-size: clamp(1.02rem, 2.1vw, 1.28rem);
   font-weight: 500;
   color: var(--color-on-surface-variant);
