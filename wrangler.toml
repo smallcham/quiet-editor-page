@@ -1,0 +1,10 @@
+# Workers 静态部署时：只上传构建产物 dist，不要把仓库根目录当「资源目录」，
+# 否则会扫描到 node_modules/workerd（>25MiB）并报 Asset too large。
+#
+# 若你用的是 Cloudflare Pages（Git 连接、填构建命令 + 输出目录），一般不需要跑
+# wrangler deploy；在 Pages 项目里设「输出目录 = dist」即可，也可删除本文件。
+name = "quiet-editor-page"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./dist/"

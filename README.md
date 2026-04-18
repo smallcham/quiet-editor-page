@@ -24,7 +24,11 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 
 ---
 
-## Cloudflare Pages 配置
+## Cloudflare 部署（Pages 与 Workers 别混用）
+
+### 推荐：Cloudflare **Pages**
+
+在 [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create** → **Pages** → 连接本仓库：
 
 | 项 | 值 |
 |----|-----|
@@ -32,7 +36,17 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 | 输出目录 | `dist` |
 | 根目录 | 若 Monorepo 且本页在子目录，填 **`quiet-editor-page`** |
 
-连接 Git 仓库后保存即可触发自动构建。无需 `wrangler.toml`（除非你在本地用 Wrangler 管理项目）。
+**不要**在同一套流程里再跑「把整个仓库当静态资源」的 **Workers + wrangler deploy**（否则会扫描 `node_modules/`，其中 `workerd` 约 118 MiB，触发 *Asset too large（25 MiB 限制）*，与是否放安装包无关）。
+
+### 若必须用 **Workers** 部署
+
+仓库根目录已提供 **`wrangler.toml`**，其中 **`[assets] directory = "./dist/"`**，只上传构建后的 `dist`。部署前务必先执行 **`npm run build`**，再执行例如：
+
+```bash
+npx wrangler deploy
+```
+
+Cloudflare 控制面板里若配置了 **Workers Builds**，请把「资源目录」或等价选项改为 **`dist`**，且构建步骤里包含 **`npm run build`**，切勿使用仓库根路径 `.` 作为资源目录。
 
 ---
 
