@@ -1,4 +1,8 @@
-请将各平台安装包放到本目录，文件名与下列完全一致（构建后在 dist/assets/downloads/ 下可下载）。
+安装包不再放在本目录随站托管，请上传到 GitHub 仓库的 Release 附件：
+
+  https://github.com/smallcham/quiet-editor-page/releases
+
+每个 Release 中附件名须与下列完全一致（区分大小写），页面使用「latest」直链，始终指向**最新已发布**版本：
 
 QuietEditor-Windows-x64.exe
 QuietEditor-macOS-arm64.tar.gz
@@ -7,4 +11,7 @@ QuietEditor-Linux-x86_64.deb
 QuietEditor-Linux-x86_64.rpm
 QuietEditor-Android-arm64.apk
 
-若需改名，请同步修改 index.html 下载区与 assets/site.js 中的 FILES 常量。
+直链格式（由 assets/site.js 的 DOWNLOAD_BASE 与各文件名拼接）：
+  https://github.com/smallcham/quiet-editor-page/releases/latest/download/<文件名>
+
+若需改名，请同步修改 index.html 下载区、assets/site.js 中的 FILES，并重新上传同名附件到 Release。

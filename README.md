@@ -36,13 +36,15 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 
 ---
 
-## 安装包：放置位置与固定文件名
+## 安装包：GitHub Releases
 
-将所有可下载安装包放在：
+可执行文件**不上传到本仓库的 `assets/downloads/`**，而是作为 **[GitHub Releases](https://github.com/smallcham/quiet-editor-page/releases)** 的附件发布。
 
-**`assets/downloads/`**
+落地页与 **`assets/site.js`** 使用「最新 Release」直链：
 
-文件名必须与下表**逐字一致**（区分大小写）。构建后会出现在 **`dist/assets/downloads/`**，页面上的链接与此路径一一对应。
+`https://github.com/smallcham/quiet-editor-page/releases/latest/download/<文件名>`
+
+每个新版本的 Release 里，附件**文件名**须与下表**逐字一致**（区分大小写），这样发新版后无需改网页代码（只要仍用相同文件名上传）。
 
 | 平台 | 文件名 |
 |------|--------|
@@ -53,13 +55,15 @@ npm run preview   # 默认 http://localhost:8788 ，需联网拉取 npx serve
 | Linux x86_64（Fedora/RHEL/openSUSE 等） | `QuietEditor-Linux-x86_64.rpm` |
 | Android arm64 | `QuietEditor-Android-arm64.apk` |
 
-同目录下另有 **`放置安装包说明.txt`**，可与上表对照使用。
+**操作提示**：在 GitHub 上 **Draft a new release** → 选择或新建 tag（如 `v1.0.1`）→ 上传上表中的文件 → **Publish**。`latest` 会指向按时间最新的那次发布。
+
+同目录 **`放置安装包说明.txt`** 为上述约定的简短备忘。
 
 ### 若需改名或增减包
 
-1. 修改 **`assets/site.js`** 顶部 `FILES` 对象中的字符串。  
-2. 同步修改 **`index.html`** 中「下载安装包」区块里各 `<a href="./assets/downloads/...">` 与说明文字。  
-3. 若调整 Linux 默认包（DEB / RPM），可编辑 **`assets/site.js`** 中的 `linuxPrefersRpm()` 正则，以匹配你目标用户的发行版 UA。
+1. 修改 **`assets/site.js`** 顶部 `DOWNLOAD_BASE`（若换仓库）与 **`FILES`** 中的字符串。  
+2. 同步修改 **`index.html`** 中「下载安装包」区块里各 `<a href="...">`。  
+3. 若调整 Linux 默认包（DEB / RPM），可编辑 **`assets/site.js`** 中的 `linuxPrefersRpm()` 正则。
 
 ---
 
@@ -100,8 +104,7 @@ quiet-editor-page/
 ├── assets/
 │   ├── site.js                # 系统检测、滚动显现、首屏视差
 │   ├── logo.svg
-│   └── downloads/             # ← 安装包放这里（见上表）
-│       ├── .gitkeep
+│   └── downloads/             # 仅存说明；安装包见 GitHub Releases
 │       └── 放置安装包说明.txt
 ├── scripts/
 │   └── build.mjs              # 输出到 dist/
@@ -114,7 +117,7 @@ quiet-editor-page/
 ## 常见问题
 
 **点击下载返回 404**  
-检查 `assets/downloads/` 是否已提交对应文件，且文件名与表格完全一致；重新执行 `npm run build` 后再部署。
+到 **[Releases](https://github.com/smallcham/quiet-editor-page/releases)** 确认已发布至少一个 Release，且附件名与上表**完全一致**（含大小写）。`latest` 直链只解析到「当前最新」那次发布里的附件。
 
 **Linux 自动下载选错 DEB/RPM**  
 属 UA 启发式限制，属正常情况；用户可在下载区手动点另一张卡片。可按需收紧或放宽 `linuxPrefersRpm()` 中的关键词。

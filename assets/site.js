@@ -1,13 +1,14 @@
 /**
  * Quiet Editor 落地页 — 系统检测下载、滚动显现、轻量视差
- * 安装包路径与文件名见同目录 downloads/ 下说明。
+ * 安装包由 GitHub Releases 提供（latest 直链，文件名须与 Release 附件一致）。
  */
 (function () {
   'use strict';
 
-  var DOWNLOAD_BASE = './assets/downloads/';
+  /** 指向当前仓库「最新 Release」附件；发新版时保持附件文件名不变即可沿用同一链接 */
+  var DOWNLOAD_BASE = 'https://github.com/smallcham/quiet-editor-page/releases/latest/download/';
 
-  /** 与「放置安装包说明.txt」及 README 中约定保持一致 */
+  /** 与 Release 附件名、README、「放置安装包说明」保持一致 */
   var FILES = {
     windows: 'QuietEditor-Windows-x64.exe',
     macArm: 'QuietEditor-macOS-arm64.tar.gz',
@@ -139,8 +140,13 @@
       el.setAttribute('href', spec.href);
       if (spec.href.charAt(0) === '#') {
         el.removeAttribute('download');
+        el.removeAttribute('rel');
+      } else if (/^https?:\/\//i.test(spec.href)) {
+        el.removeAttribute('download');
+        el.setAttribute('rel', 'noopener noreferrer');
       } else {
         el.setAttribute('download', '');
+        el.removeAttribute('rel');
       }
       var iconName = isIos ? 'block' : 'download';
       var icon = '<span class="material-symbols-outlined">' + iconName + '</span> ';
